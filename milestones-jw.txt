@@ -1,0 +1,9 @@
+- visual studio project with sfml setup and display a window - +20
+- create backboard - +5
+- create notes that move across the backboard - +5
+- visual effect when keys are pressed, demonstrating input works - +5
+
+
+
+
+- music

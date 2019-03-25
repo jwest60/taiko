@@ -1,0 +1,4 @@
+- visual studio project with sfml that displays a window +20
+- window can play music from file; pause and resume +10
+- basic game menu/title screen +5
+- find some sound effects (drum hits, menu sounds, etc.) +5
