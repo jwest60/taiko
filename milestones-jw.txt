@@ -1,9 +1,11 @@
-- visual studio project with sfml setup and display a window - +20
-- create backboard - +5
-- create notes that move across the backboard - +5
-- visual effect when keys are pressed, demonstrating input works - +5
+Name: Joseph West
 
+-/20 - visual studio project with sfml setup and display a window
+-/10 - create game state class
+-/2 create backboard
+-/5 create notes that move across the backboard
+-/3 visual effect when keys are pressed, demonstrating input works
 
-
-
-- music
+March 24
+	- 2:30 - 4:30	Lab
+	- 6:30 - 8:30	VS Project, set up SFML, boilerplate code for window
