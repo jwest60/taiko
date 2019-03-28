@@ -9,3 +9,5 @@ Name: Joseph West
 March 24
 	- 2:30 - 4:30	Lab
 	- 6:30 - 8:30	VS Project, set up SFML, boilerplate code for window
+March 27
+	- 8:30 - 9:30	Project Organization (README, wiki, issues)
