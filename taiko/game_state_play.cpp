@@ -24,4 +24,8 @@ void Game_State_Play::handle_event(sf::Event event)
 
 	if (event.key.code == sf::Keyboard::S || event.key.code == sf::Keyboard::D)
 		std::cout << "INNER\n";
+
+	if (event.key.code == sf::Keyboard::Space)
+		paused = !paused;
+		
 }
