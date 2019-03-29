@@ -1,4 +1,15 @@
-- visual studio project with sfml that displays a window +20
-- window can play music from file; pause and resume +10
-- basic game menu/title screen +5
-- find some sound effects (drum hits, menu sounds, etc.) +5
+Ethan Haworth
+Week 1 Milestones
+
+20/20 visual studio project with sfml that displays a window
+10/10 window can play music from file; pause and resume
+-/5   basic game menu/title screen
+5/5   find some sound effects (drum hits, menu sounds, etc.)
+
+Time Log:
+March 24
+  2:30 - 4:30 PM    Lab
+March 28
+  8:00 - 11:00 PM   Installing dependencies, VS project configuration, play music from file, composed theme song
+March 29
+  2:00 - 4:00 PM    Pause toggle on keyboard input, sound effect hunting
