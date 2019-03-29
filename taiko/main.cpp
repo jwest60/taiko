@@ -1,24 +1,13 @@
 #include <SFML/Graphics.hpp>
 
+#include "game.h"
+#include "game_state_play.h"
+
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Taiko");
+	Game game;
 
-	while (window.isOpen())
-	{
-		sf::Event event;
+	game.game_loop();
 
-		while (window.pollEvent(event))
-		{
-			switch (event.type)
-			{
-			case sf::Event::Closed:
-				window.close();
-				break;
-			}
-		}
-
-		window.clear(sf::Color::Red);
-		window.display();
-	}
+	return 0;
 }
