@@ -11,6 +11,12 @@ void Game::game_loop()
 	while (window.isOpen())
 	{
 		sf::Event event;
+		auto current_state = this->state_mgr.get_current_state();
+		if (current_state == nullptr)
+		{
+			std::cerr << "FATAL EXCEPTION: Attempting to handle non-existent current state\n";
+			exit(EXIT_FAILURE);
+		}
 
 		while (window.pollEvent(event))
 		{
@@ -20,13 +26,8 @@ void Game::game_loop()
 				window.close();
 				break;
 			}
-		}
 
-		auto current_state = this->state_mgr.get_current_state();
-		if (current_state == nullptr)
-		{
-			std::cerr << "FATAL EXCEPTION: Attempting to handle non-existent current state\n";
-			exit(EXIT_FAILURE);
+			current_state->handle_event(event);
 		}
 
 		current_state->get_input();
