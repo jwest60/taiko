@@ -7,7 +7,9 @@ Name: Joseph West
 -/3 visual effect when keys are pressed, demonstrating input works
 
 March 24
-	- 2:30 - 4:30	Lab
-	- 6:30 - 8:30	VS Project, set up SFML, boilerplate code for window
+	- 2:30 - 4:30 PM	Lab
+	- 6:30 - 8:30 PM	VS Project, set up SFML, boilerplate code for window
 March 27
-	- 8:30 - 9:30	Project Organization (README, wiki, issues)
+	- 8:30 - 9:30 PM	Project Organization (README, wiki, issues)
+March 29
+	- 9:30 - 11:30 PM	Game, Game State, State Manager, Input Detection
