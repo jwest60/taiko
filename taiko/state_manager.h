@@ -16,13 +16,11 @@ public:
 
 	State_Manager();
 
+	void create_states(sf::RenderWindow& window);
 	bool set_state(const std::string& state);
-
 	Game_State* get_current_state() const;
 
 private:
-
-	void create_states();
 
 	Game_State* current_state;
 
