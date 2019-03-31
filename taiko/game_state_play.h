@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 
 #include "game_state.h"
@@ -18,6 +19,9 @@ public:
 
 private:
 
+	bool paused;
+	sf::Music music;
+  
 	sf::RectangleShape backboard;
 	void render_backboard();
 };
