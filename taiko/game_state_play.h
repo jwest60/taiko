@@ -10,7 +10,7 @@ class Game_State_Play : public Game_State
 {
 public:
 
-	Game_State_Play();
+	Game_State_Play(sf::RenderWindow* window);
 
 	virtual void draw();
 	virtual void update();
@@ -21,4 +21,7 @@ private:
 
 	bool paused;
 	sf::Music music;
+  
+	sf::RectangleShape backboard;
+	void render_backboard();
 };

@@ -3,6 +3,8 @@
 Game::Game()
 {
 	this->window.create(sf::VideoMode(800, 600), "Taiko");
+
+	this->state_mgr.create_states(this->window);
 	this->state_mgr.set_state("STATE_PLAY");
 }
 
