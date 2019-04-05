@@ -1,6 +1,7 @@
 #include "game_state_play.h"
 
-Game_State_Play::Game_State_Play(sf::RenderWindow* window) : paused(false)
+Game_State_Play::Game_State_Play(sf::RenderWindow* window) 
+	: paused(false), n_gen(400.f, 1.0f, 40, sf::Vector2f(window->getSize().x + 200.f, window->getSize().y * 0.5f))
 { 
   this->window = window;
   
@@ -21,11 +22,13 @@ Game_State_Play::Game_State_Play(sf::RenderWindow* window) : paused(false)
 void Game_State_Play::draw()
 {
 	this->window->draw(this->backboard);
+	
+	this->window->draw(this->n_gen);
 
 	return;
 }
 
-void Game_State_Play::update()
+void Game_State_Play::update(const sf::Time dt)
 {
 	if (this->paused)
 	{
@@ -36,6 +39,8 @@ void Game_State_Play::update()
 		//without the conditional, music will constantly return to start
 		if (music.getStatus() == sf::SoundSource::Paused) music.play();
 	}
+
+	if (!paused) this->n_gen.update(dt);
 
 	return;
 }

@@ -10,6 +10,8 @@ Game::Game()
 
 void Game::game_loop()
 {
+	sf::Clock clock;
+
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -19,6 +21,8 @@ void Game::game_loop()
 			std::cerr << "FATAL EXCEPTION: Attempting to handle non-existent current state\n";
 			exit(EXIT_FAILURE);
 		}
+
+		sf::Time dt = clock.restart();
 
 		while (window.pollEvent(event))
 		{
@@ -33,7 +37,7 @@ void Game::game_loop()
 		}
 
 		current_state->get_input();
-		current_state->update();
+		current_state->update(dt);
 		window.clear(sf::Color::Red);
 		current_state->draw();
 
