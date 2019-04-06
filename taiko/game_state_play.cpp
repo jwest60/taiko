@@ -1,9 +1,12 @@
 #include "game_state_play.h"
 
 Game_State_Play::Game_State_Play(sf::RenderWindow* window) 
-	: paused(false), n_gen(400.f, 1.0f, 40, sf::Vector2f(window->getSize().x + 200.f, window->getSize().y * 0.5f))
+	: 
+	paused(false), 
+	n_gen(400.f, 0.3f, 40, sf::Vector2f(window->getSize().x + 200.f, window->getSize().y * 0.5f)),
+	backboard(window->getSize().x, 100, sf::Vector2f(0, window->getSize().y * 0.5f))
 { 
-  this->window = window;
+	this->window = window;
   
   	//initialize music object and load main theme
 	if (!music.openFromFile("maintheme.ogg"))
@@ -15,14 +18,11 @@ Game_State_Play::Game_State_Play(sf::RenderWindow* window)
 
 	music.setLoop(true);
 	music.play();
- 
-	this->render_backboard();
 }
 
 void Game_State_Play::draw()
 {
 	this->window->draw(this->backboard);
-	
 	this->window->draw(this->n_gen);
 
 	return;
@@ -62,17 +62,4 @@ void Game_State_Play::handle_event(sf::Event event)
 
 	if (event.key.code == sf::Keyboard::Space)
 		paused = !paused;
-}
-
-void Game_State_Play::render_backboard()
-{
-	sf::Vector2u window_size = this->window->getSize();
-
-	unsigned int backboard_width = window_size.x;
-	unsigned int backboard_height = 100;
-
-	this->backboard.setSize(sf::Vector2f(backboard_width, backboard_height));
-	this->backboard.setOrigin(sf::Vector2f(0, backboard_height / 2));
-	this->backboard.setFillColor(sf::Color::Blue);
-	this->backboard.setPosition(0, window_size.y /2);
 }

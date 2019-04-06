@@ -7,6 +7,7 @@
 
 #include "game_state.h"
 #include "note_generator.h"
+#include "backboard.h"
 
 class Game_State_Play : public Game_State
 {
@@ -24,8 +25,6 @@ private:
 	bool paused;
 	sf::Music music;
 
+	Backboard backboard;
 	Note_Generator n_gen;
-  
-	sf::RectangleShape backboard;
-	void render_backboard();
 };
