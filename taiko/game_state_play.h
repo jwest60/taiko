@@ -8,6 +8,9 @@
 #include "game_state.h"
 #include "note_generator.h"
 #include "backboard.h"
+#include "texture_manager.h"
+#include "audio_manager.h"
+#include "jukebox.h"
 
 class Game_State_Play : public Game_State
 {
@@ -22,8 +25,14 @@ public:
 
 private:
 
+	void load_textures();
+	void load_audio();
+
 	bool paused;
-	sf::Music music;
+	Jukebox jukebox;
+
+	Texture_Manager tex_mgr;
+	Audio_Manager audio_mgr;
 
 	Backboard backboard;
 	Note_Generator n_gen;

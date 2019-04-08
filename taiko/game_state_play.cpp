@@ -7,17 +7,13 @@ Game_State_Play::Game_State_Play(sf::RenderWindow* window)
 	backboard(window->getSize().x, 100, sf::Vector2f(0, window->getSize().y * 0.5f))
 { 
 	this->window = window;
-  
-  	//initialize music object and load main theme
-	if (!music.openFromFile("maintheme.ogg"))
-	{
-		//may be ideal to simply let program run without main theme
-		std::cerr << "FATAL EXCEPTION: Failed to load main theme\n";
-		exit(EXIT_FAILURE);
-	}
 
-	music.setLoop(true);
-	music.play();
+	this->load_textures();
+	this->load_audio();
+
+	this->jukebox.openFromFile("maintheme.ogg");
+	this->jukebox.setLoop(true);
+	this->jukebox.play();
 }
 
 void Game_State_Play::draw()
@@ -30,16 +26,6 @@ void Game_State_Play::draw()
 
 void Game_State_Play::update(const sf::Time dt)
 {
-	if (this->paused)
-	{
-		music.pause();
-	}
-	else
-	{
-		//without the conditional, music will constantly return to start
-		if (music.getStatus() == sf::SoundSource::Paused) music.play();
-	}
-
 	if (!paused) this->n_gen.update(dt);
 
 	return;
@@ -61,5 +47,18 @@ void Game_State_Play::handle_event(sf::Event event)
 		std::cout << "INNER\n";
 
 	if (event.key.code == sf::Keyboard::Space)
+	{
 		paused = !paused;
+		this->paused ? this->jukebox.pause() : this->jukebox.play();
+	}
+}
+
+void Game_State_Play::load_textures()
+{
+	return;
+}
+
+void Game_State_Play::load_audio()
+{
+	return;
 }
