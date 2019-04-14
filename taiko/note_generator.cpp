@@ -9,7 +9,12 @@ Note_Generator::Note_Generator(
 	velocity(velocity), 
 	rate(rate),
 	n_radius(n_radius),
-	spawn(spawn) {}
+	spawn(spawn), 
+	uid(1,2)
+{
+	std::random_device rd{};
+	this->mt.seed(rd());
+}
 
 void Note_Generator::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
@@ -39,10 +44,43 @@ void Note_Generator::generate_notes(const sf::Time dt)
 	if (elapsed.asSeconds() > this->rate)
 	{
 		this->t = sf::Time::Zero;
-		this->notes.emplace_back(new Note(this->velocity, this->n_radius, this->spawn));
+
+		int note_type = this->uid(this->mt);
+		Note_Type type = this->get_note_type(note_type);
+
+		this->notes.emplace_back(new Note(this->velocity, this->n_radius, this->spawn, type));
 
 		return;
 	}
 
 	this->t += dt;
+}
+
+std::deque<std::unique_ptr<Note> >::iterator Note_Generator::find_colliding_note(const float x)
+{
+	for (auto it = this->notes.begin(); it != this->notes.end(); ++it)
+	{
+		if (it->get()->model.getPosition().x + it->get()->model.getRadius() < x) continue;
+		return it;
+	}
+
+	return this->notes.end();
+}
+
+void Note_Generator::remove_note(std::deque<std::unique_ptr<Note> >::iterator note)
+{
+	this->notes.erase(note);
+}
+
+Note_Type Note_Generator::get_note_type(int type)
+{
+	switch (type)
+	{
+	case 1:
+		return Note_Type::INNER;
+	case 2:
+		return Note_Type::OUTER;
+	default:
+		return Note_Type::INNER;
+	}
 }

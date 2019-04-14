@@ -4,6 +4,7 @@
 #include <deque>
 #include <memory>
 #include <iostream>
+#include <random>
 
 #include "note.h"
 
@@ -15,7 +16,18 @@ public:
 
 	void update(const sf::Time dt);
 
+	std::deque<std::unique_ptr<Note> >::iterator find_colliding_note(const float x);
+
+	// Note& get_note_at_index(int i);
+
+	void remove_note(std::deque<std::unique_ptr<Note> >::iterator note);
+
+	Note_Type get_note_type(int type);
+
 private:
+
+	std::mt19937 mt;
+	std::uniform_int_distribution<int> uid;
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
