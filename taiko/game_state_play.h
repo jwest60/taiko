@@ -11,6 +11,7 @@
 #include "texture_manager.h"
 #include "audio_manager.h"
 #include "jukebox.h"
+#include "hit_marker.h"
 
 class Game_State_Play : public Game_State
 {
@@ -33,6 +34,8 @@ private:
 
 	Texture_Manager tex_mgr;
 	Audio_Manager audio_mgr;
+
+	Hit_Marker h_marker;
 
 	Backboard backboard;
 	Note_Generator n_gen;

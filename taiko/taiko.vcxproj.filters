@@ -45,6 +45,9 @@
     <ClCompile Include="jukebox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="hit_marker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -75,6 +78,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="jukebox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hit_marker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

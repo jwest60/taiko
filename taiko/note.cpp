@@ -1,8 +1,22 @@
 #include "note.h"
 
-Note::Note(float velocity, unsigned int radius, sf::Vector2f& pos) : velocity(velocity)
+sf::Color get_color(Note_Type type)
 {
-	this->model.setFillColor(sf::Color::Green);
+	switch (type)
+	{
+	case Note_Type::INNER:
+		return sf::Color::Green;
+	case Note_Type::OUTER:
+		return sf::Color::Magenta;
+	default:
+		return sf::Color::Black;
+	}
+}
+
+Note::Note(float velocity, unsigned int radius, sf::Vector2f& pos, Note_Type type) 
+	: velocity(velocity), type(type)
+{
+	this->model.setFillColor(get_color(type));
 	this->model.setRadius(radius);
 	this->model.setOrigin(radius, radius);
 	this->model.setPosition(pos);
