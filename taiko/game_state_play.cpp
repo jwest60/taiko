@@ -2,7 +2,7 @@
 
 Game_State_Play::Game_State_Play(sf::RenderWindow* window)
 	:
-	paused(false),
+	paused(true),
 	n_gen(400.f, 0.3f, 40, sf::Vector2f(window->getSize().x + 200.f, window->getSize().y * 0.5f)),
 	backboard(window->getSize().x, 100, sf::Vector2f(0, window->getSize().y * 0.5f)),
 	h_marker(sf::Vector2f(100.f, window->getSize().y / 2), 40)
@@ -12,13 +12,17 @@ Game_State_Play::Game_State_Play(sf::RenderWindow* window)
 	this->load_textures();
 	this->load_audio();
 
-	this->jukebox.openFromFile("maintheme.ogg");
+	// To temporarily solve an issue with this song playing when the game launches
+	// the game begins as paused and has to be manually unpaused at the beginning.
+	// Ideally the file would be opened for the first time on pressing "play" so that
+	// it's possible for the player to select a file to use from the menu.
+	this->jukebox.openFromFile("taikosong1.ogg");
 	this->jukebox.setLoop(true);
-	this->jukebox.play();
 }
 
 void Game_State_Play::draw()
 {
+	this->window->draw(this->bgsprite);
 	this->window->draw(this->backboard);
 	this->window->draw(this->n_gen);
 	this->window->draw(this->h_marker);
@@ -69,7 +73,8 @@ void Game_State_Play::handle_event(sf::Event event)
 
 void Game_State_Play::load_textures()
 {
-	return;
+	this->tex_mgr.create_texture("background", "taikobg1.png");
+	bgsprite.setTexture(this->tex_mgr.get_texture("background"));
 }
 
 void Game_State_Play::load_audio()

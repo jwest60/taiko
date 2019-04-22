@@ -39,4 +39,6 @@ private:
 
 	Backboard backboard;
 	Note_Generator n_gen;
+
+	sf::Sprite bgsprite;
 };

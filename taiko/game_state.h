@@ -12,4 +12,8 @@ public:
 	virtual void handle_event(sf::Event) = 0;
 
 	sf::RenderWindow* window;
+
+	//slightly awkward implementation of state swap functionality in game.cpp
+	bool stateSwapRequested = false;
+	std::string toSwapTo;
 };

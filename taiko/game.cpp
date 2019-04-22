@@ -5,7 +5,7 @@ Game::Game()
 	this->window.create(sf::VideoMode(800, 600), "Taiko");
 
 	this->state_mgr.create_states(this->window);
-	this->state_mgr.set_state("STATE_PLAY");
+	this->state_mgr.set_state("STATE_MENU");
 }
 
 void Game::game_loop()
@@ -40,6 +40,11 @@ void Game::game_loop()
 		current_state->update(dt);
 		window.clear(sf::Color::Red);
 		current_state->draw();
+
+		if (current_state->stateSwapRequested) {
+			current_state->stateSwapRequested = false;
+			this->state_mgr.set_state(current_state->toSwapTo);
+		}
 
 		window.display();
 	}
