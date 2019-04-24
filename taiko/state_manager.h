@@ -9,6 +9,7 @@
 
 #include "game_state.h"
 #include "game_state_play.h"
+#include "game_state_menu.h"
 
 class State_Manager
 {
