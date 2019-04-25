@@ -14,6 +14,8 @@ public:
 
 	void setLoop(bool b);
 
+	sf::SoundSource::Status getStatus();
+
 private:
 
 	sf::Music music;

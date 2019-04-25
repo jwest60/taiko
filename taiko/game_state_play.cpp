@@ -25,7 +25,7 @@ Game_State_Play::Game_State_Play(sf::RenderWindow* window)
 	// Ideally the file would be opened for the first time on pressing "play" so that
 	// it's possible for the player to select a file to use from the menu.
 	this->jukebox.openFromFile("taikosong1.ogg");
-	this->jukebox.setLoop(true);
+	this->jukebox.setLoop(false);
 }
 
 void Game_State_Play::draw()
@@ -42,6 +42,13 @@ void Game_State_Play::draw()
 void Game_State_Play::update(const sf::Time dt)
 {
 	if (!paused) this->n_gen.update(dt);
+
+	// delay music so as to sync up to the notes reaching the hit marker
+	if (this->jukebox.getStatus() == sf::SoundSource::Status::Stopped)
+	{
+		// nested if reduces the number of computations performed when jukebox is no longer stopped
+		if (this->n_gen.start_music(this->h_marker.model.getPosition())) this->jukebox.play();
+	}
 
 	return;
 }
@@ -86,7 +93,16 @@ void Game_State_Play::handle_event(sf::Event event)
 	if (event.key.code == sf::Keyboard::Space)
 	{
 		paused = !paused;
-		this->paused ? this->jukebox.pause() : this->jukebox.play();
+		this->jukebox.pause();
+		if (!this->paused && this->jukebox.getStatus() != sf::SoundSource::Status::Stopped) {
+			this->jukebox.play();
+		}
+	}
+
+	if (event.key.code == sf::Keyboard::Escape)
+	{
+		this->stateSwapRequested = true;
+		this->toSwapTo = "STATE_MENU";
 	}
 }
 

@@ -16,8 +16,30 @@ Note_Generator::Note_Generator(
 	std::random_device rd{};
 	this->mt.seed(rd());
 
-	tex_mgr.create_texture("inner", "notein1.png");
-	tex_mgr.create_texture("outer", "noteout1.png");
+	this->tex_mgr.create_texture("inner", "notein1.png");
+	this->tex_mgr.create_texture("outer", "noteout1.png");
+
+	// process osu beatmap
+	std::istringstream iss;
+	std::ifstream ifs;
+	std::string line, note_time;
+
+	ifs.open("beatmap.osu");
+
+	// skip through file to HitObjects
+	while (std::getline(ifs, line)){ if (line == "[HitObjects]") break; }
+
+	// process objects and add to note_times
+	while (std::getline(ifs, line))
+	{
+		iss.str(line);
+		//run command 3 times to skip over x and y
+		std::getline(iss, note_time, ',');
+		std::getline(iss, note_time, ',');
+		std::getline(iss, note_time, ',');
+
+		this->note_times.push( std::stoul(note_time) );
+	}
 }
 
 void Note_Generator::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -34,7 +56,8 @@ void Note_Generator::update(const sf::Time dt)
 
 	if (this->notes.empty()) return;
 
-	if (this->notes.front()->model.getPosition().x + this->notes.front()->model.getRadius() < 0) {
+	if (this->notes.front()->model.getPosition().x + this->notes.front()->model.getRadius() < 0)
+	{
 		this->notes.pop_front();
 		this->missed++;
 	}
@@ -47,16 +70,20 @@ void Note_Generator::generate_notes(const sf::Time dt)
 {
 	sf::Time elapsed = this->t + dt;
 
-	if (elapsed.asSeconds() > this->rate)
+	if (note_times.empty()) return;
+
+	unsigned long next_note_time = this->note_times.front();
+
+	if (elapsed.asMilliseconds() >= next_note_time)
 	{
-		this->t = sf::Time::Zero;
+		//this->t = sf::Time::Zero;
 
 		int note_type = this->uid(this->mt);
 		Note_Type type = this->get_note_type(note_type);
 
 		this->notes.emplace_back(new Note(this->velocity, this->n_radius, this->spawn, type, tex_mgr));
 
-		return;
+		this->note_times.pop();
 	}
 
 	this->t += dt;
@@ -89,4 +116,14 @@ Note_Type Note_Generator::get_note_type(int type)
 	default:
 		return Note_Type::INNER;
 	}
+}
+
+bool Note_Generator::start_music(const sf::Vector2f& hitpos)
+{
+	//goal is to delay music by the amount of time it takes a note to move from spawn to hit marker
+	//v = d/t; t = d/v
+	//velocity is given, d = spawn.x - hitpos.x
+	if (this->note_times.empty()) return false;
+	if (this->t.asSeconds() >= (spawn.x - hitpos.x) / this->velocity) return true;
+	return false;
 }

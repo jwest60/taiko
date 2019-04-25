@@ -2,9 +2,12 @@
 
 #include <SFML/Graphics.hpp>
 #include <deque>
+#include <queue>
 #include <memory>
 #include <iostream>
 #include <random>
+#include <fstream>
+#include <sstream>
 
 #include "note.h"
 #include "texture_manager.h"
@@ -27,6 +30,9 @@ public:
 
 	unsigned int missed;
 
+	// returns true once the appropriate amount of time has passed to (hopefully) sync up the music
+	bool start_music(const sf::Vector2f& hitpos);
+
 private:
 
 	std::mt19937 mt;
@@ -40,6 +46,9 @@ private:
 	float velocity;
 	// the rate in seconds at which notes will be generated
 	float rate;
+
+	// holds times at which notes occur
+	std::queue<unsigned long> note_times;
 
 	// the radius of the notes
 	unsigned int n_radius;

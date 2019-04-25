@@ -16,9 +16,15 @@ void Jukebox::openFromFile(const std::string& file_name)
 		std::cerr << "Jukebox failed to open file " << file_name << '\n';
 
 	this->music.setLoop(true);
+	this->music.stop();
 }
 
 void Jukebox::setLoop(bool b)
 {
 	this->music.setLoop(b);
+}
+
+sf::SoundSource::Status Jukebox::getStatus()
+{
+	return this->music.getStatus();
 }
