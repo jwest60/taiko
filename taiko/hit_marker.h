@@ -10,7 +10,7 @@ class Hit_Marker : public sf::Drawable
 {
 public:
 
-	Hit_Marker(const sf::Vector2f& pos, unsigned int radius);
+	Hit_Marker(const sf::Vector2f& pos, float radius);
 
 	bool process_hit(const sf::FloatRect& rect);
 

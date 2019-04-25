@@ -29,6 +29,8 @@ private:
 	void load_textures();
 	void load_audio();
 
+	void update_score();
+
 	bool paused;
 	Jukebox jukebox;
 
@@ -41,4 +43,9 @@ private:
 	Note_Generator n_gen;
 
 	sf::Sprite bgsprite;
+
+	sf::Font font;
+	sf::Text score;
+
+	unsigned int hits, misses;
 };
