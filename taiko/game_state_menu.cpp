@@ -26,12 +26,12 @@ Game_State_Menu::Game_State_Menu(sf::RenderWindow* window)
 }
 
 void Game_State_Menu::draw() {
-	//anything below gui (background images etc.) goes here
+	//all drawing handled by TGUI
 	gui.draw();
 }
 
 void Game_State_Menu::update(const sf::Time dt) {
-	//uhh update your stuff
+	return;
 }
 
 void Game_State_Menu::get_input() {
