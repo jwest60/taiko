@@ -46,5 +46,5 @@ void Game_State_Menu::handle_event(sf::Event event) {
 void Game_State_Menu::playButtonPressed(){
 	this->jukebox.pause(); //would be ideal to be able to start playing menu music again
 	stateSwapRequested = true;
-	toSwapTo = "STATE_PLAY";
+	toSwapTo = "STATE_SELECT";
 }

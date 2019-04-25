@@ -17,9 +17,5 @@ public:
 
 	void game_loop();
 
-private:
-
-	std::stack<Game_State *> states;
-
 	State_Manager state_mgr;
 };

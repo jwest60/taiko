@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "game.h"
+
 class Game_State
 {
 public:

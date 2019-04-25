@@ -51,6 +51,12 @@
     <ClCompile Include="game_state_menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="game_state_song_select.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="beatmap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -87,6 +93,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game_state_menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_state_song_select.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="beatmap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

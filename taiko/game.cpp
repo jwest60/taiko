@@ -4,7 +4,9 @@ Game::Game()
 {
 	this->window.create(sf::VideoMode(800, 600), "Taiko");
 
-	this->state_mgr.create_states(this->window);
+	this->state_mgr.add_state("STATE_MENU", new Game_State_Menu(&this->window));
+	this->state_mgr.add_state("STATE_SELECT", new Game_State_Song_Select(&this->window));
+	this->state_mgr.add_state("STATE_PLAY", new Game_State_Play(&this->window));
 	this->state_mgr.set_state("STATE_MENU");
 }
 
@@ -38,7 +40,7 @@ void Game::game_loop()
 
 		current_state->get_input();
 		current_state->update(dt);
-		window.clear(sf::Color::Red);
+		window.clear(sf::Color::Black);
 		current_state->draw();
 
 		if (current_state->stateSwapRequested) {
