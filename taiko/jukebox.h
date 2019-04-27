@@ -3,6 +3,10 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 
+/*
+ *	wrapper class for sf::Music
+ *	allows for the extension of sf::Music
+ */
 class Jukebox
 {
 public:

@@ -2,12 +2,18 @@
 
 State_Manager::State_Manager() : current_state(nullptr) {}
 
+/*
+ *	Creates states and stores them in memory 
+ */
 void State_Manager::create_states(sf::RenderWindow& window)
 {
 	this->states.insert(std::make_pair("STATE_PLAY", std::make_unique<Game_State_Play>(&window)));
 	this->states.insert(std::make_pair("STATE_MENU", std::make_unique<Game_State_Menu>(&window)));
 }
 
+/*
+ *	Sets the current state given the name of a state
+ */
 bool State_Manager::set_state(const std::string& state)
 {
 	try 

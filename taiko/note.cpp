@@ -1,5 +1,6 @@
 #include "note.h"
 
+// translates enum to a color
 sf::Color get_color(Note_Type type)
 {
 	switch (type)
@@ -41,6 +42,7 @@ void Note::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(this->model);
 }
 
+// move the note across the screen
 void Note::move(sf::Time t)
 {
 	float dt = t.asSeconds();

@@ -5,6 +5,7 @@
 
 int main()
 {
+	// create an instance of game and begin the game loop
 	Game game;
 
 	game.game_loop();

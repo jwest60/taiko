@@ -13,6 +13,10 @@
 #include "jukebox.h"
 #include "hit_marker.h"
 
+/*
+ *	class that holds components that will be used during the play state
+ *	i.e. the state where the user must hit notes to a beat
+ */
 class Game_State_Play : public Game_State
 {
 public:
@@ -32,6 +36,15 @@ private:
 	void update_score();
 
 	bool paused;
+
+	sf::Sprite bgsprite;
+
+	sf::Font font;
+	sf::Text score;
+
+	unsigned int hits, misses;
+
+	// custom implementations, see individual classes for documentation
 	Jukebox jukebox;
 
 	Texture_Manager tex_mgr;
@@ -41,11 +54,4 @@ private:
 
 	Backboard backboard;
 	Note_Generator n_gen;
-
-	sf::Sprite bgsprite;
-
-	sf::Font font;
-	sf::Text score;
-
-	unsigned int hits, misses;
 };

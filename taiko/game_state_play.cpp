@@ -1,5 +1,8 @@
 #include "game_state_play.h"
 
+/*
+ * Initialize components for play state
+ */
 Game_State_Play::Game_State_Play(sf::RenderWindow* window)
 	:
 	paused(true),
@@ -28,6 +31,9 @@ Game_State_Play::Game_State_Play(sf::RenderWindow* window)
 	this->jukebox.setLoop(false);
 }
 
+/*
+ * See Game_State::draw()
+ */
 void Game_State_Play::draw()
 {
 	this->window->draw(this->bgsprite);
@@ -39,6 +45,9 @@ void Game_State_Play::draw()
 	return;
 }
 
+/*
+ * See Game_State::update()
+ */
 void Game_State_Play::update(const sf::Time dt)
 {
 	if (!paused) this->n_gen.update(dt);
@@ -53,11 +62,17 @@ void Game_State_Play::update(const sf::Time dt)
 	return;
 }
 
+/*
+ * See Game_State::get_input()
+ */
 void Game_State_Play::get_input()
 {
 	return;
 }
 
+/*
+ * See Game_State::handle_event()
+ */
 void Game_State_Play::handle_event(sf::Event event)
 {
 	if (event.type != sf::Event::KeyPressed) return;
@@ -65,6 +80,8 @@ void Game_State_Play::handle_event(sf::Event event)
 	if (event.key.code == sf::Keyboard::A || event.key.code == sf::Keyboard::F)
 	{
 		auto n_col = this->n_gen.find_colliding_note(this->h_marker.model.getPosition().x);
+
+		if (n_col == this->n_gen.notes.end()) return;
 
 		if (n_col->get()->type == Note_Type::OUTER && this->h_marker.process_hit(n_col->get()->model.getGlobalBounds())) {
 			hits++;
@@ -79,6 +96,8 @@ void Game_State_Play::handle_event(sf::Event event)
 	if (event.key.code == sf::Keyboard::S || event.key.code == sf::Keyboard::D)
 	{
 		auto n_col = this->n_gen.find_colliding_note(this->h_marker.model.getPosition().x);
+
+		if (n_col == this->n_gen.notes.end()) return;
 
 		if (n_col->get()->type == Note_Type::INNER && this->h_marker.process_hit(n_col->get()->model.getGlobalBounds())) {
 			hits++;
@@ -106,6 +125,10 @@ void Game_State_Play::handle_event(sf::Event event)
 	}
 }
 
+/*
+ * Load textures into memory and hand them off to the texture manager
+ * See Texture_Manager
+ */
 void Game_State_Play::load_textures()
 {
 	this->tex_mgr.create_texture("background", "taikobg1.png");
@@ -115,6 +138,10 @@ void Game_State_Play::load_textures()
 	this->backboard.model.setTexture( &(this->tex_mgr.get_texture("backboard")) );
 }
 
+/*
+ * Load sound files into memory and hand them off to the audio manager
+ * See Audio_Manager
+ */
 void Game_State_Play::load_audio()
 {
 	return;

@@ -1,5 +1,6 @@
 #include "note_generator.h"
 
+// initialize random number generator and customize notes to be generated
 Note_Generator::Note_Generator(
 	float velocity,
 	float rate,
@@ -42,6 +43,7 @@ Note_Generator::Note_Generator(
 	}
 }
 
+// draws all notes currently in the deque
 void Note_Generator::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	for (auto it = this->notes.begin(); it != this->notes.end(); ++it)
@@ -50,6 +52,10 @@ void Note_Generator::draw(sf::RenderTarget& target, sf::RenderStates states) con
 	}
 }
 
+/*
+ *	updates note positions, distance depends on dt
+ *	See Game::game_loop() for a description of dt
+ */ 
 void Note_Generator::update(const sf::Time dt)
 {
 	this->generate_notes(dt);
@@ -68,6 +74,7 @@ void Note_Generator::update(const sf::Time dt)
 
 void Note_Generator::generate_notes(const sf::Time dt)
 {
+	// determines if enough time has passed to generate the next note
 	sf::Time elapsed = this->t + dt;
 
 	if (note_times.empty()) return;
@@ -89,6 +96,11 @@ void Note_Generator::generate_notes(const sf::Time dt)
 	this->t += dt;
 }
 
+/*
+ * determines if a note exists at the given x position
+ * returns an iterator to that note if true
+ * otherwise returns the end of the note deque
+ */
 std::deque<std::unique_ptr<Note> >::iterator Note_Generator::find_colliding_note(const float x)
 {
 	for (auto it = this->notes.begin(); it != this->notes.end(); ++it)
@@ -105,6 +117,9 @@ void Note_Generator::remove_note(std::deque<std::unique_ptr<Note> >::iterator no
 	this->notes.erase(note);
 }
 
+/*
+ * simple translator from int to enum
+ */
 Note_Type Note_Generator::get_note_type(int type)
 {
 	switch (type)

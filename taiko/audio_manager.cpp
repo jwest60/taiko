@@ -1,5 +1,8 @@
 #include "audio_manager.h"
 
+/*
+ * pulls the sound file and stores it in memory with the given name
+ */
 void Audio_Manager::create_sound(const std::string& name, const std::string& file_name)
 {
 	auto m = this->sounds.emplace(name, new sf::Music);
@@ -13,6 +16,7 @@ void Audio_Manager::create_sound(const std::string& name, const std::string& fil
 	}
 }
 
+// retrieves the sound file by name
 sf::Music& Audio_Manager::get_sound(const std::string& name)
 {
 	try
