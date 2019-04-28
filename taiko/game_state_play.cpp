@@ -2,7 +2,7 @@
 
 Game_State_Play::Game_State_Play(sf::RenderWindow* window)
 	:
-	paused(true),
+	paused(false),
 	hits(0), misses(0),
 	n_gen(400.f, 0.3f, 40, sf::Vector2f(window->getSize().x + 200.f, window->getSize().y * 0.5f)),
 	backboard(window->getSize().x, 100, sf::Vector2f(0, window->getSize().y * 0.5f)),
