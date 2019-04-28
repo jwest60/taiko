@@ -2,6 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 
+/*
+ * this is the board that the notes slide down on
+ */
 struct Backboard : public sf::Drawable
 {
 	Backboard(unsigned int backboard_width, unsigned int backboard_height, const sf::Vector2f& pos);

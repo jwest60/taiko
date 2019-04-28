@@ -6,6 +6,9 @@
 #include <iostream>
 #include <memory>
 
+/*
+ * holds sound files in memory
+ */
 class Audio_Manager
 {
 public:

@@ -1,5 +1,6 @@
 #include "texture_manager.h"
 
+// creates a texture and stores it in memory with the given name
 void Texture_Manager::create_texture(const std::string& name, const std::string& file_name)
 {
 	sf::Texture texture;
@@ -8,6 +9,7 @@ void Texture_Manager::create_texture(const std::string& name, const std::string&
 	this->textures[name] = texture;
 }
 
+// retrieve the texture from the map by name
 sf::Texture& Texture_Manager::get_texture(const std::string& name)
 {
 	try

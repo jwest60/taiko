@@ -17,11 +17,14 @@ struct Note : public sf::Drawable
 
 	sf::CircleShape model;
 
+	// the speed at which the notes move
 	float velocity;
 
+	// moves the note across the screen
 	void move(sf::Time t);
 
 	//tex_mgr stores all possible textures; tex is needed to store the right texture for the entire life of the note
 	Texture_Manager tex_mgr;
+
 	sf::Texture tex;
 };
