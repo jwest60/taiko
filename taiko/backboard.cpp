@@ -7,7 +7,7 @@ Backboard::Backboard(unsigned int width, unsigned int height, const sf::Vector2f
 {
 	this->model.setSize(sf::Vector2f(this->width, this->height));
 	this->model.setOrigin(sf::Vector2f(0, this->height / 2));
-	this->model.setFillColor(sf::Color::Blue);
+	//this->model.setFillColor(sf::Color::Blue);
 	this->model.setPosition(pos);
 }
 

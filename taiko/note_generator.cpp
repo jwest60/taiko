@@ -1,19 +1,23 @@
 #include "note_generator.h"
 
 Note_Generator::Note_Generator(
-	float velocity, 
-	float rate, 
-	unsigned int n_radius, 
-	sf::Vector2f spawn) 
-	: 
-	velocity(velocity), 
+	float velocity,
+	float rate,
+	unsigned int n_radius,
+	sf::Vector2f spawn)
+	:
+	velocity(velocity),
 	rate(rate),
 	n_radius(n_radius),
-	spawn(spawn), 
-	uid(1,2)
+	spawn(spawn),
+	uid(1, 2),
+	missed(0)
 {
 	std::random_device rd{};
 	this->mt.seed(rd());
+
+	tex_mgr.create_texture("inner", "notein1.png");
+	tex_mgr.create_texture("outer", "noteout1.png");
 }
 
 void Note_Generator::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -30,8 +34,10 @@ void Note_Generator::update(const sf::Time dt)
 
 	if (this->notes.empty()) return;
 
-	if (this->notes.front()->model.getPosition().x + this->notes.front()->model.getRadius() < 0)
+	if (this->notes.front()->model.getPosition().x + this->notes.front()->model.getRadius() < 0) {
 		this->notes.pop_front();
+		this->missed++;
+	}
 	
 	for (size_t i = 0; i < this->notes.size(); ++i)
 		this->notes[i]->move(dt);
@@ -48,7 +54,7 @@ void Note_Generator::generate_notes(const sf::Time dt)
 		int note_type = this->uid(this->mt);
 		Note_Type type = this->get_note_type(note_type);
 
-		this->notes.emplace_back(new Note(this->velocity, this->n_radius, this->spawn, type));
+		this->notes.emplace_back(new Note(this->velocity, this->n_radius, this->spawn, type, tex_mgr));
 
 		return;
 	}

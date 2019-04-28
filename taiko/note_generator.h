@@ -7,6 +7,7 @@
 #include <random>
 
 #include "note.h"
+#include "texture_manager.h"
 
 class Note_Generator : public sf::Drawable
 {
@@ -23,6 +24,8 @@ public:
 	void remove_note(std::deque<std::unique_ptr<Note> >::iterator note);
 
 	Note_Type get_note_type(int type);
+
+	unsigned int missed;
 
 private:
 
@@ -47,4 +50,6 @@ private:
 	std::deque<std::unique_ptr<Note> > notes;
 
 	void generate_notes(const sf::Time dt);
+
+	Texture_Manager tex_mgr;
 };
