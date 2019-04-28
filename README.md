@@ -46,9 +46,8 @@ Note: You don't have to use both keys. Two keys are provided for "double tapping
 
 ### Strategy
 
-The game will begin in a paused state. Once the game is unpaused, notes will begin to travel from the right to the left. Once they align with the hit marker, use the appropriate key to hit the note. Listening to the music will help you time this.
+On pressing play, notes will begin to travel from the right to the left and music will begin to play after a short delay. Once they align with the hit marker, use the appropriate key to hit the note. Listening to the music will help you time this.
 
 ### Known Bugs
 
-- Notes mysteriously stop being generated after exactly 55 notes have been played
 - Hitting the ESC button to go back to the menu doesn't reset the play state
