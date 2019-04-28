@@ -32,6 +32,8 @@ Follow [this guide in the TGUI documentation](https://tgui.eu/tutorials/0.8/visu
 
 Note: The `.dll` files are already included, so you will not need to copy them into your project.
 
+If you're having issues with installation, e-mail me at jwest2178@gmail.com.
+
 # How To Play
 
 ### Controls
