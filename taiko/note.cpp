@@ -29,9 +29,10 @@ sf::Texture get_texture(Texture_Manager t_m, Note_Type t) {
 Note::Note(float velocity, unsigned int radius, sf::Vector2f& pos, Note_Type type, Texture_Manager& tex_mgr) 
 	: velocity(velocity), type(type)
 {
-	//not sure if it's best to figure out which texture to use here or in note_generator.cpp
+	//store texture in member variable then assign to model
 	this->tex = get_texture(tex_mgr, type);
 	this->model.setTexture(&this->tex);
+	//set remaining attributes
 	this->model.setRadius(radius);
 	this->model.setOrigin(radius, radius);
 	this->model.setPosition(pos);

@@ -133,6 +133,9 @@ Note_Type Note_Generator::get_note_type(int type)
 	}
 }
 
+/*
+ * Called by game_state_play; returns true when the notes have caught up to the music
+ */
 bool Note_Generator::start_music(const sf::Vector2f& hitpos)
 {
 	//goal is to delay music by the amount of time it takes a note to move from spawn to hit marker

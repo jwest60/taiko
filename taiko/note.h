@@ -7,6 +7,11 @@
 
 enum class Note_Type { INNER, OUTER };
 
+/*
+ * Note class used by note_generator.cpp
+ * Creates a CircleShape and associated Note_Type, velocity, and texture
+ * and provides draw and move functions
+ */
 struct Note : public sf::Drawable
 {
 	Note_Type type;

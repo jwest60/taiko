@@ -147,6 +147,9 @@ void Game_State_Play::load_audio()
 	return;
 }
 
+/*
+ * Update string for score text object
+ */
 void Game_State_Play::update_score()
 {
 	std::string temp;

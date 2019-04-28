@@ -12,6 +12,9 @@
 #include "note.h"
 #include "texture_manager.h"
 
+/*
+ * Generates and manages notes with quantity and timing given by beatmap.osu file
+ */
 class Note_Generator : public sf::Drawable
 {
 public:

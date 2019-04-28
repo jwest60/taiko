@@ -8,6 +8,7 @@
 
 /*
  * holds sound files in memory
+ * currently unused
  */
 class Audio_Manager
 {
