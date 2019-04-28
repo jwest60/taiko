@@ -1,5 +1,8 @@
 #include "game_state_menu.h"
 
+/*
+ * Initialize components for menu state
+ */
 Game_State_Menu::Game_State_Menu(sf::RenderWindow* window)
 {
 	this->window = window;
@@ -25,19 +28,31 @@ Game_State_Menu::Game_State_Menu(sf::RenderWindow* window)
 	this->jukebox.play();
 }
 
+/*
+ * See Game_State::draw()
+ */
 void Game_State_Menu::draw() {
-	//anything below gui (background images etc.) goes here
+	//all drawing handled by TGUI
 	gui.draw();
 }
 
+/*
+ * See Game_State::update()
+ */
 void Game_State_Menu::update(const sf::Time dt) {
-	//uhh update your stuff
+	return;
 }
 
+/*
+ * See Game_State::get_input()
+ */
 void Game_State_Menu::get_input() {
 	return;
 }
 
+/*
+ * See Game_State::handle_event()
+ */
 void Game_State_Menu::handle_event(sf::Event event) {
 	gui.handleEvent(event);
 }

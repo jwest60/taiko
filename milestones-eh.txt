@@ -8,8 +8,34 @@ Week 1 Milestones
 
 Time Log:
 March 24
-  2:30 - 4:30 PM    Lab
+  2:30 - 4:30 PM      Team Meeting 1: all members present, assigned milestones above
 March 28
-  8:00 - 11:00 PM   Installing dependencies, VS project configuration, play music from file, composed theme song
+  8:00 - 11:00 PM     Installing dependencies, VS project configuration, play music from file, composed theme song
 March 29
-  2:00 - 4:00 PM    Pause toggle on keyboard input, sound effect hunting
+  2:00 - 4:00 PM      Pause toggle on keyboard input, sound effect hunting
+March 31
+  2:30 - 4:30 PM      Team Meeting 2: all members present, see https://github.com/jwest60/taiko/milestone/2
+April 2
+  8:00 - 10:00 PM     Installing and learning the basics of TGUI, implementing very simple menu screen
+April 5
+  5:00 - 6:30 PM      Prototyping and drawing textures
+April 7
+  2:30 - 4:30 PM      Team Meeting 3: all members present, continued work on week 2 milestones
+April 11
+  7:00 - 9:00 PM      Drawing menu screen and working on other textures
+April 13
+  2:00 - 3:30 PM      General code cleanup, composed short song for play state
+April 15
+  2:30 - 4:30 PM      Team Meeting 3: all members present, continued work on week 2 milestones
+April 18
+  7:00 - 10:30 PM     State swap implementation, troubleshooting music issues
+April 19
+  3:30 PM - 5:00 PM   Continuing to troubleshoot music issues
+April 22
+  12:30 - 2:00 PM     Finalizing menu and state swap code for pushing to GitHub (I hadn't pushed anything since March 29)
+April 23
+  2:30 - 4:30 PM      Team Meeting 4: all members present, discussed goals for demo day and assigned issues appropriately
+April 24
+  7:00 PM - 3:30 AM   Implementing osu! beatmap file reading and all textures (in new `beatmaps` branch)
+April 27
+  8:30 - 9:00 PM      Adding and revising comments

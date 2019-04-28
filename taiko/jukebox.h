@@ -3,6 +3,10 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 
+/*
+ *	wrapper class for sf::Music
+ *	allows for the extension of sf::Music
+ */
 class Jukebox
 {
 public:
@@ -13,6 +17,8 @@ public:
 	void openFromFile(const std::string& file_name);
 
 	void setLoop(bool b);
+
+	sf::SoundSource::Status getStatus();
 
 private:
 

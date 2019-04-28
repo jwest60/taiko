@@ -8,6 +8,10 @@
 #include "game_state.h"
 #include "jukebox.h"
 
+/*
+ *	Menu state, first state of the game
+ *	Provides options for the user to go to the play state
+ */
 class Game_State_Menu : public Game_State
 {
 public:

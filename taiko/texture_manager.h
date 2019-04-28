@@ -6,6 +6,9 @@
 #include <fstream>
 #include <iostream>
 
+/*
+ * class to hold textures in memory
+ */
 class Texture_Manager
 {
 public:

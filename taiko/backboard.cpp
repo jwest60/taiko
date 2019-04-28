@@ -2,6 +2,7 @@
 
 #include "backboard.h"
 
+//initialize rectangle attributes
 Backboard::Backboard(unsigned int width, unsigned int height, const sf::Vector2f& pos)
 	: width(width), height(height)
 {
