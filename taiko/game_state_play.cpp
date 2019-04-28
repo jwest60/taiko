@@ -23,10 +23,7 @@ Game_State_Play::Game_State_Play(sf::RenderWindow* window)
 	this->score.setCharacterSize(30);
 	this->score.setPosition(sf::Vector2f(50, 50));
 
-	// To temporarily solve an issue with this song playing when the game launches
-	// the game begins as paused and has to be manually unpaused at the beginning.
-	// Ideally the file would be opened for the first time on pressing "play" so that
-	// it's possible for the player to select a file to use from the menu.
+	// load song but do not play until n_gen.start_music() returns true
 	this->jukebox.openFromFile("taikosong1.ogg");
 	this->jukebox.setLoop(false);
 }
